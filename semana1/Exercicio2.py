@@ -78,7 +78,18 @@ def invert(lst):
         
     lst = ant
     return lst
-    
+   
+def igual(listaA,listaB):
+    while listaA is not None and listaB is not None:
+        if listaA.info != listaB.info:
+            print("As duas lista são diferentes")
+            
+        else:
+            print("As duas listas são iguais ou possuem elementos iguais")
+            
+        listaA = listaA.prox
+        listaB = listaB.prox
+        break
     
 def main():
     lst = cria_lista()
@@ -118,5 +129,27 @@ def main():
     lista_imprime(lst)
     print()
     
+    listaA = cria_lista()
+    listaA = insere_lista(listaA,"A")
+    listaA = insere_lista(listaA,"B")
+    listaA = insere_lista(listaA,"C")
+    listaA = insere_lista(listaA,"L")
     
+    listaB = cria_lista()
+    listaB = insere_lista(listaB,"A")
+    listaB = insere_lista(listaB,"B")
+    listaB = insere_lista(listaB,"C")
+    listaB = insere_lista(listaB,"L")
+    
+    print("Lista A:")
+    lista_imprime(listaA)
+    print()
+    
+    print("Lista B:")
+    lista_imprime(listaB)
+    print()
+    
+    igual(listaA, listaB)
+    print()
+
 main()
