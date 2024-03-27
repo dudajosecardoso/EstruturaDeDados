@@ -47,18 +47,37 @@ def separa(lst, valorSepara):
 
 
 def merge(lst, segunda_lista):
+    terceira_lista = Lista(None)
+    atual = terceira_lista
+    while lst is not None and segunda_lista is not  None:
+        atual.prox = lst
+        lst = lst.prox
+        atual = atual.prox
+        
+        atual.prox = segunda_lista
+        segunda_lista = segunda_lista.prox
+        atual = atual.prox
+        
+    if lst is not None:
+        atual.prox = lst
+        
+    if segunda_lista is not None:
+        atual.prox = segunda_lista
+        
+    return terceira_lista
     
 
-#4
-#def invert(lst):
-#    ant = None
- #   atual = lst
-  #  while atual:
-   #     aux = atual.prox
-    #    atual.prox = ant
-     #   ant = atual
-      #  atual = aux
-    #return lst
+def invert(lst):
+    ant = None
+    atual = lst
+    while atual:
+        aux = atual.prox
+        atual.prox = ant
+        ant = atual
+        atual = aux
+        
+    lst = ant
+    return lst
     
     
 def main():
@@ -69,21 +88,35 @@ def main():
     lst = insere_lista(lst,4)
     lst = insere_lista(lst,5)
     
-    
+    print("Lista original:")
     lista_imprime(lst)
     print()
     
+    
     valueToRemove = 2
+    print(f"Lista com o valor {valueToRemove} removido:")
     lst = retira_n(lst, valueToRemove)
     
     lista_imprime(lst)
     print()
     
     valorSepara = 4
+    print(f"Lista separada no valor {valorSepara}:")
     segunda_lista = separa(lst, valorSepara)
     lista_imprime(lst)
     print()
     lista_imprime(segunda_lista)
+    print()
+    
+    print("Lista junta de novo:")
+    terceira_lista = merge(lst, segunda_lista)
+    lista_imprime(terceira_lista)
+    print()
+    
+    print("Lista invertida:")
+    lst = invert(lst)
+    lista_imprime(lst)
+    print()
     
     
 main()
