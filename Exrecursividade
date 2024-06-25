@@ -1,0 +1,107 @@
+##questão 1:
+def calculate_product(n):
+    product = 1
+    for num in range(1, n + 1):
+        product *= num
+    return product
+
+num = int(input("Enter a number: "))
+print(f"\nResult: {calculate_product(num)}")
+
+##questão 2:
+def print_range(start, end):
+    for num in range(start, end + 1):
+        print(num, end=" ")
+
+start = int(input("\nEnter the start of the range: "))
+end = int(input("\nEnter the end of the range: "))
+print_range(start, end)
+print()
+
+##questão 3:
+def power(base, exponent):
+    result = 1
+    for _ in range(abs(exponent)):
+        result *= base
+    if exponent < 0:
+        return 1 / result
+    else:
+        return result
+
+base = int(input("\nEnter the base: "))
+exponent = int(input("\nEnter the exponent: "))
+print(f"\nResult: {power(base, exponent)}")
+
+##questão 4:
+def calculate_s():
+    total = 0
+    for num in range(1, 51):
+        term = (2 * num - 1) / num
+        print(f"{2 * num - 1}/{num} + ", end="")
+        total += term
+    print(f"\nThe value of S is: {total:.2f}")
+
+calculate_s()
+
+##questão 5:
+def successor(n):
+    return n + 1
+
+def predecessor(n):
+    return n - 1
+
+def calculate_sum(x, y):
+    if y == 0:
+        return x
+    else:
+        return successor(calculate_sum(x, predecessor(y)))
+
+x = int(input("\nEnter a number: "))
+y = int(input("\nEnter another number: "))
+result = calculate_sum(x, y)
+print(f"\nThe sum of {x} and {y} is: {result}")
+
+##questão 6:
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid
+
+        elif arr[mid] < target:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    return False
+
+arr = []
+for _ in range(10 + 1):
+    num = int(input("\nEnter a number: "))
+    arr.append(num)
+print(arr)
+target = int(input("\nEnter the number to search for: "))
+
+result = binary_search(arr, target)
+
+if result is not False:
+    print(f"Value {target} found at position {result}")
+else:
+    print(f"Value {target} not found")
+
+##questão 7:
+def convert_to_binary(x):
+    if x == 0:
+        return '0'
+    elif x == 1:
+        return '1'
+    else:
+        return convert_to_binary(x // 2) + str(x % 2)
+
+num = int(input("\nEnter a number to convert to binary: "))
+print(f"\nResult of conversion: {convert_to_binary(num)}")
